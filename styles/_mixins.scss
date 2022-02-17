@@ -1,0 +1,13 @@
+@import "variables";
+
+@mixin transition($properties) {
+  $transition: ();
+  @each $property in $properties {
+    $transition: append(
+      $transition,
+      ($property $transition-duration ease-in),
+      $separator: comma
+    );
+  }
+  transition: $transition;
+}

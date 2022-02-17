@@ -1,0 +1,17 @@
+{
+  "name": "SummCraft",
+  "short_name": "Summ",
+  "description": "SuumCraft is network of servers Hub, Survival, KitPvP, BedWars, SkyWars, BattleRoyale and many more!",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#B725B7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512"
+    }
+  ]
+}

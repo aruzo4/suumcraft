@@ -1,0 +1,214 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.welcome {
+  position: relative;
+  height: 100vh;
+  padding: 0 7vw 5vh 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+
+    &:nth-child(1) {
+      path {
+        fill: $primary;
+      }
+    }
+    &:nth-child(2) {
+      z-index: -1;
+      path {
+        fill: $secondary;
+      }
+    }
+  }
+
+  .content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+
+    .server-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: $primary;
+
+      h2 {
+        font-size: clamp(0.9rem, 1.2vw, 5rem);
+        font-weight: 300;
+      }
+
+      div {
+        height: 30px;
+        width: 5px;
+        border-radius: $radius;
+        background: $secondary;
+      }
+
+      span {
+        font-size: clamp(0.9rem, 1.2vw, 5rem);
+
+        strong {
+          font-weight: 300;
+        }
+      }
+    }
+
+    .title {
+      font-size: clamp(2.5rem, 3.5vw, 5rem);
+      font-weight: 400;
+      color: $primary;
+    }
+
+    .description {
+      font-size: clamp(0.9rem, 1.1vw, 5rem);
+      color: $gray;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1vw;
+
+      button {
+        cursor: pointer;
+        width: 10vw;
+        height: 7vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        border-radius: $radius;
+        font-size: clamp(1rem, 1vw, 5rem);
+        font-family: montserrat;
+        font-weight: 300;
+
+        svg {
+          width: 20px;
+        }
+      }
+
+      .play {
+        position: relative;
+        border: none;
+        background: $primary;
+        color: #fff;
+        @include transition(background-color);
+
+        &:hover {
+          background: $primary-light;
+
+          &::after {
+            opacity: 1;
+            line-height: auto;
+            font-size: clamp(0.8rem, 1vw, 5rem);
+          }
+        }
+
+        &::after {
+          content: "Click to copy server IP.";
+          position: absolute;
+          bottom: -5vh;
+          opacity: 0;
+          font-size: 0;
+          font-weight: 200;
+          color: $primary-light;
+          @include transition((opacity, color));
+        }
+
+        path {
+          fill: #fff;
+        }
+
+        &:active {
+          background: $primary;
+          transition: none;
+
+          &::after {
+            color: $primary;
+            transition: none;
+          }
+        }
+      }
+
+      .discord {
+        background: none;
+        border: 2px solid $primary;
+        color: $primary;
+        @include transition((border-color, color));
+
+        &:hover {
+          border-color: $primary-light;
+          color: $primary-light;
+          path {
+            fill: $primary-light;
+          }
+        }
+
+        path {
+          fill: $primary;
+          @include transition(fill);
+        }
+      }
+    }
+  }
+
+  .spawn {
+    position: relative;
+    width: 35%;
+    height: 55%;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    background-image: url(../../public/images/spawn.png);
+    background-position: center;
+    background-size: cover;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      transform: rotate(35deg);
+      background: $primary;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      transform: rotate(65deg);
+      background: $secondary;
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile) {
+  .welcome {
+    .content {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+
+      .buttons {
+        button {
+          width: 150px;
+          height: 50px;
+        }
+      }
+    }
+
+    .spawn {
+      display: none;
+    }
+  }
+}

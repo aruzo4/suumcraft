@@ -1,0 +1,68 @@
+@import "../../styles/variables";
+
+.online-players {
+  position: relative;
+  z-index: -1;
+  width: 100%;
+  padding: 5vh 5vw;
+  background: $primary;
+
+  h1 {
+    color: $secondary;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 4vw, 5rem);
+    text-align: center;
+  }
+
+  .players {
+    padding: 5vh 0;
+    display: grid;
+    grid-gap: 100px;
+    justify-content: center;
+
+    .player {
+      position: relative;
+      width: 200px;
+      height: 80px;
+      padding: $radius;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #fff;
+      border-radius: $radius;
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 10px;
+        left: 10px;
+        border-radius: $radius;
+        background: orange;
+      }
+
+      .avatar {
+        border-radius: $radius;
+      }
+
+      span {
+        width: calc(100% - 60px);
+        color: $primary;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $mobile) {
+  .online-players {
+    .players {
+      grid-template-columns: repeat(auto-fill, 200px);
+      justify-content: space-between;
+    }
+  }
+}

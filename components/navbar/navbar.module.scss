@@ -1,0 +1,73 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.navbar {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(#fff, 0.8);
+  backdrop-filter: blur(8px);
+
+  .logo {
+    cursor: pointer;
+    @include transition(filter);
+
+    &:hover {
+      filter: brightness(110%);
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    a {
+      cursor: pointer;
+      font-size: 1rem;
+      color: $gray;
+      @include transition(color);
+
+      &:hover {
+        color: $primary-light;
+      }
+    }
+
+    button {
+      width: 100px;
+      height: 40px;
+      border: none;
+      border-radius: $radius;
+      background: $primary;
+      @include transition(background-color);
+
+      &:hover {
+        background: $primary-light;
+      }
+
+      a {
+        font-family: montserrat;
+        font-weight: 300;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile) {
+  .navbar {
+    .menu {
+      gap: 10px;
+      * {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
